@@ -6,6 +6,7 @@ Student: Macasero, Princess Nashema
 Date: June 13, 2026  
 
 Project Description
+
 This project explores timer interrupts and task scheduling on the RT-Spark Development Board. Two hardware timers are configured to fire at different intervals, controlling LEDs and triggering foreground tasks. A button-triggered external interrupt is also incorporated to illustrate event-driven scheduling behavior.
 
 Hardware
@@ -23,12 +24,15 @@ Features
 
 Timing Measurements
 
-Parameter	Definition	Measured Value	Units
-TRelease(TIM2)	Timer interrupt occurs	1.0	seconds
-TLatency(Task A)	Delay before Task A starts	24.94	µs
-TISR(TIM2)	Time in ISR	4.31	µs
-TTask(Task A)	Task A execution time	50	ms
-TResponse(Task A)	Total response time	50.02443	ms
+## Timing Measurements
+
+| Parameter | Definition | Measured Value | Units |
+|---|---|---|---|
+| TRelease(TIM2) | Timer interrupt occurs | 1.0 | seconds |
+| TLatency(Task A) | Delay before Task A starts | 24.94 | µs |
+| TISR(TIM2) | Time in ISR | 4.31 | µs |
+| TTask(Task A) | Task A execution time | 50 | ms |
+| TResponse(Task A) | Total response time | 50.02443 | ms |
 
 Sequence Diagram
 ![Sequence Diagram](sequence_diagram.png)
