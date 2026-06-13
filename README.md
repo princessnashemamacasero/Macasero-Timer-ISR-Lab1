@@ -24,8 +24,6 @@ Features
 
 Timing Measurements
 
-## Timing Measurements
-
 | Parameter | Definition | Measured Value | Units |
 |---|---|---|---|
 | TRelease(TIM2) | Timer interrupt occurs | 1.0 | seconds |
@@ -44,15 +42,22 @@ Build Instructions
 4. Upload: Run → Debug or Run
 
  Analysis
-1.What is the maximum latency for Task A in your system?
-The maximum latency for Task A is 70ms. This occurs when the interrupt fires at the same moment Task A (50ms) and Task B (20ms) are both executing, causing Task A to wait for both tasks to complete before the main loop can check its flag.
-2. If Task B is running when TIM2 interrupt occurs, how does it affect TLatency(Task A)?      
-When the interrupt fires, the flag is set right away, but Task A cannot be processed by the main loop until Task B has completed its execution. This means TLatency grows longer depending on how much of Task B's 20ms delay still remains.
-3. Calculate worst-case TResponse for Task A if all other tasks are running
-The worst-case TResponse is 120ms in total. This is computed by adding the maximum waiting time of 70ms — which accounts for both Task A and Task B running — to Task A's own execution time of 50ms.
-4. How would response time change with a preemptive scheduler?
-With a preemptive scheduler, the currently running task would be immediately suspended the moment a higher-priority interrupt fires. This brings the latency down to nearly zero, resulting in a much faster and more predictable response time overall.
 
+1. What is the maximum latency for Task A in your system?
+
+The maximum latency for Task A is 70ms. This occurs when the interrupt fires at the same moment Task A (50ms) and Task B (20ms) are both executing, causing Task A to wait for both tasks to complete before the main loop can check its flag.
+
+2. If Task B is running when TIM2 interrupt occurs, how does it affect TLatency(Task A)?
+
+When the interrupt fires, the flag is set right away, but Task A cannot be processed by the main loop until Task B has completed its execution. This means TLatency grows longer depending on how much of Task B's 20ms delay still remains.
+
+3. Calculate worst-case TResponse for Task A if all other tasks are running
+
+The worst-case TResponse is 120ms in total. This is computed by adding the maximum waiting time of 70ms — which accounts for both Task A and Task B running — to Task A's own execution time of 50ms.
+
+4. How would response time change with a preemptive scheduler?
+
+With a preemptive scheduler, the currently running task would be immediately suspended the moment a higher-priority interrupt fires. This brings the latency down to nearly zero, resulting in a much faster and more predictable response time overall.
 References
 1. Castor, P. R. P. (2025). Software Design Basics [Lecture 2]. BCA143 Firmware Programming, MSU-IIT.
 2. STMicroelectronics. (2024). STM32F4 HAL Driver User Manual.
